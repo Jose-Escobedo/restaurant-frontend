@@ -14,13 +14,13 @@ J&J's Restaurant
 
 J&J Restaurant Backend
 
-Review has many users
+Review has many menu_items
 
-Review has many menu_items through users
+Review has many users through menu_items
 
-User has many reviews
+User has many menu_items
 
-User has many menu_items through reviews
+User has many reviews through menu_items
 
 Menu_item belongs to Review
 
