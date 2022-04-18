@@ -22,8 +22,8 @@ User has many reviews
 
 User has many menu_items through reviews
 
-Menu_items belongs to Review
+Menu_item belongs to Review
 
-Menu_items belongs to User
+Menu_item belongs to User
 
 Cart has many menu_items
