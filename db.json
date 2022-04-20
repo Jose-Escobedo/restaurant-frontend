@@ -39,23 +39,23 @@
   ],
   "reviews": [
     {
-      "id": 1,
-      "name": "Will Johnson",
-      "content": "Best restaurant in town!"
+      "name": "Johjn Bananas",
+      "content": "Good Times!~",
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "Mitchell Emory",
-      "content": "Best food ever! I will be coming back!"
+      "name": "",
+      "content": "",
+      "id": 2
     },
     {
-      "id": 3,
-      "name": "Roy Jefferson",
-      "content": "It was alright. The pasta was dry."
+      "name": "HEllo",
+      "content": "Great!",
+      "id": 3
     },
     {
-      "name": "Bill Jackson",
-      "content": "This place serves garbage. Do yourself a favor and never eat here.",
+      "name": "Hello",
+      "content": "Grweat!\n",
       "id": 4
     }
   ]
