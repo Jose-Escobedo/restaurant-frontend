@@ -137,6 +137,10 @@ code {
   font-size: 3rem;
 }
 
+#edit-review {
+  width: 100%;
+}
+
 .reviews-container button {
   border: none;
   border-radius: 20px;
@@ -144,6 +148,7 @@ code {
   background: rgb(30, 110, 207);
   color: white;
   font-family: "Raleway", sans-serif;
+  cursor: pointer;
 }
 .reviews-container {
   display: flex;
