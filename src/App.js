@@ -1,23 +1,110 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./components/Header";
+import Reviews from "./components/Reviews";
+import Home from "./components/Home";
+import Menu from "./components/Menu";
+import NewReviewForm from "./components/NewReviewForm";
+import React, { useState, useEffect } from "react";
+import Cart from "./components/Cart";
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 
 function App() {
+  const [menu, setMenu] = useState([]);
+  const [reviews, setReviews] = useState([]);
+
+  function handleRenderMenu(data) {
+    setMenu(data);
+  }
+
+  function handleRenderReviews(data) {
+    setReviews(data);
+  }
+
+  function handleCartClick(id, cart, price) {
+    setMenu(
+      menu.map((item) => (id === item.id ? { ...item, isCart: cart } : item))
+    );
+  }
+
+  const addNewReview = (e) => {
+    // let newReview = [...reviews, newReviewObj]
+    // setReviews(newReview)
+
+    fetch("http://localhost:3000/reviews", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(e),
+    })
+      .then((res) => res.json())
+      .then(setReviews([...reviews, e]));
+  };
+
+  useEffect(() => {
+    fetch("http://localhost:3000/menu")
+      .then((res) => res.json())
+      .then(handleRenderMenu);
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/reviews")
+      .then((res) => res.json())
+      .then(handleRenderReviews);
+  }, []);
+
   return (
+    // <>
+    //   <Router>
+    //     <Header />
+
+    //     <Routes>
+    //       <Route exact path="/" element={<App />}>
+    //         <Route
+    //           exact
+    //           path="menu"
+    //           element={<Menu menu={menu} handleCartClick={handleCartClick} />}
+    //         />
+    //         <Route
+    //           exact
+    //           path="reviews"
+    //           element={<Reviews reviews={reviews} />}
+    //         />
+    //       </Route>
+    //     </Routes>
+    //   </Router>
+    // </>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route
+            exact
+            path="menu"
+            element={
+              <Menu
+                menu={menu}
+                handleCartClick={(id) => handleCartClick(id, true)}
+              />
+            }
+          />
+          <Route
+            exact
+            path="reviews"
+            element={<Reviews reviews={reviews} addNewReview={addNewReview} />}
+          />
+          <Route
+            exact
+            path="cart"
+            element={
+              <Cart
+                menu={menu.filter((item) => item.isCart)}
+                handleClick={(id) => handleCartClick(id, false)}
+              />
+            }
+          />
+        </Routes>
+      </Router>
     </div>
   );
 }
