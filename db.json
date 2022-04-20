@@ -1,0 +1,62 @@
+{
+  "menu": [
+    {
+      "id": 1,
+      "name": "Pasta",
+      "image": "./images/pasta.jpg",
+      "price": 15.99
+    },
+    {
+      "id": 2,
+      "name": "Green Salad",
+      "image": "./images/green-salad.jpg",
+      "price": 7.99
+    },
+    {
+      "id": 3,
+      "name": "Cheese Pizza",
+      "image": "./images/cheese-pizza.jpg",
+      "price": 12.99
+    },
+    {
+      "id": 4,
+      "name": "Tomato Soup",
+      "image": "./images/tomato-soup.jpg",
+      "price": 13.99
+    },
+    {
+      "id": 5,
+      "name": "Chicken Sandwich",
+      "image": "./images/chicken-sandwich.jpg",
+      "price": 7.99
+    },
+    {
+      "id": 6,
+      "name": "Bacon Cheeseburger",
+      "image": "./images/bacon-cheeseburger.jpg",
+      "price": 10.99
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "name": "Will Johnson",
+      "content": "Best restaurant in town!"
+    },
+    {
+      "id": 2,
+      "name": "Mitchell Emory",
+      "content": "Best food ever! I will be coming back!"
+    },
+    {
+      "id": 3,
+      "name": "Roy Jefferson",
+      "content": "It was alright. The pasta was dry."
+    },
+    {
+      "name": "Bill Jackson",
+      "content": "This place serves garbage. Do yourself a favor and never eat here.",
+      "id": 4
+    }
+  ]
+}
