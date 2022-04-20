@@ -26,16 +26,22 @@ function App() {
     );
   }
 
-  function HandleRemoveReview(review) {
-    fetch(`http://localhost:3000/reviews/${review.id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((r) => r.json())
-      .then(() => setReviews(review.filter((item) => item.id !== review.id)));
+
+  function onDeleteReview(id) {
+    const updatedReviews = reviews.filter((review) => review.id !== id);
+    setReviews(updatedReviews);
   }
+
+  // function handleRemoveReview(review) {
+  //   fetch(`http://localhost:3000/reviews/${review.id}`, {
+  //     method: "DELETE",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //     .then((r) => r.json())
+  //     .then(() => setReviews(review.filter((item) => item.id !== review.id)));
+  // }
 
   const changeReview = (review) => {
     // let newReview = [...reviews, newReviewObj]
@@ -121,7 +127,7 @@ function App() {
               <Reviews
                 reviews={reviews}
                 addNewReview={addNewReview}
-                handleRemoveReview={HandleRemoveReview}
+                onDeleteReview={onDeleteReview}
                 changeReview={changeReview}
               />
             }

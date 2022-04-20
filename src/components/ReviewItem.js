@@ -2,7 +2,7 @@ import React from "react";
 
 function ReviewItem({
   review: { name, content, id },
-  handleRemoveReview,
+  onDeleteReview,
   handleUpdateReview,
   review,
 }) {
@@ -12,6 +12,13 @@ function ReviewItem({
   //  let newReview = [...reviews, newReviewObj]
   //  setReviews(newReview)
   // }
+  function handleRemoveReview(){
+    fetch(`http://localhost:3000/reviews/${id}`,{
+      method: "DELETE",
+
+    });
+    onDeleteReview(id)
+  }
 
   return (
     <div className="review-item">
@@ -20,7 +27,7 @@ function ReviewItem({
         <h2>{content}</h2>
       </div>
       <div className="remove-btn">
-        <button onClick={() => handleRemoveReview(review)}>
+        <button onClick={handleRemoveReview}>
           Remove Review
         </button>
       </div>
