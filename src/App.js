@@ -67,6 +67,21 @@ function App() {
       .then(setReviews([...reviews, e]));
   };
 
+  const addNewMenuItem = (e) => {
+    // let newReview = [...reviews, newReviewObj]
+    // setReviews(newReview)
+
+    fetch("http://localhost:3000/menu", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(e),
+    })
+      .then((res) => res.json())
+      .then(setMenu([...reviews, e]));
+  };
+
   useEffect(() => {
     fetch("http://localhost:3000/menu")
       .then((res) => res.json())
@@ -110,6 +125,7 @@ function App() {
             element={
               <Menu
                 menu={menu}
+                addNewMenuItem={addNewMenuItem}
                 handleCartClick={(id) => handleCartClick(id, true)}
               />
             }
