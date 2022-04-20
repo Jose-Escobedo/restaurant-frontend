@@ -26,6 +26,32 @@ function App() {
     );
   }
 
+  function HandleRemoveReview(review) {
+    fetch(`http://localhost:3000/reviews/${review.id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((r) => r.json())
+      .then(() => setReviews(review.filter((item) => item.id !== review.id)));
+  }
+
+  const changeReview = (review) => {
+    // let newReview = [...reviews, newReviewObj]
+    // setReviews(newReview)
+
+    fetch(`http://localhost:3000/reviews/${review.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(review),
+    })
+      .then((res) => res.json())
+      .then(setReviews(review));
+  };
+
   const addNewReview = (e) => {
     // let newReview = [...reviews, newReviewObj]
     // setReviews(newReview)
@@ -91,7 +117,14 @@ function App() {
           <Route
             exact
             path="reviews"
-            element={<Reviews reviews={reviews} addNewReview={addNewReview} />}
+            element={
+              <Reviews
+                reviews={reviews}
+                addNewReview={addNewReview}
+                handleRemoveReview={HandleRemoveReview}
+                changeReview={changeReview}
+              />
+            }
           />
           <Route
             exact

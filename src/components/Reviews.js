@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import ReviewItem from "./ReviewItem";
 import Header from "./Header";
 import NewReviewForm from "./NewReviewForm";
+import ChangeReviewForm from "./ChangeReviewForm";
 
-function Reviews({ reviews, handleButtonShowForm, addNewReview }) {
+function Reviews({ reviews, handleRemoveReview, addNewReview, changeReview }) {
   // const [buttonShow, setButtonShow] = useState(true);
   // function handleButtonShowForm(e) {
   //   setButtonShow(!buttonShow);
@@ -15,13 +16,24 @@ function Reviews({ reviews, handleButtonShowForm, addNewReview }) {
         <h1 id="review-title">Reviews</h1>
         <div className="reviews">
           {reviews.map((review) => {
-            return <ReviewItem key={review.id} review={review} />;
+            return (
+              <>
+                <ReviewItem
+                  key={review.id}
+                  review={review}
+                  handleRemoveReview={handleRemoveReview}
+                />
+                <ChangeReviewForm
+                  key={review.id}
+                  changeReview={changeReview}
+                  reviewId={review.id}
+                />
+              </>
+            );
           })}
         </div>
-        {/* {buttonShow ? (
-        <button onClick={handleButtonShowForm}>Add a review</button>
-      ) : null} */}
       </div>
+
       <NewReviewForm addNewReview={addNewReview} />
     </>
   );
