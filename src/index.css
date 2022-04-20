@@ -120,6 +120,11 @@ code {
   transform: translateY(4px);
 }
 
+#newMenuForm {
+  width: 50%;
+  padding: 5%;
+}
+
 .reviews {
   display: flex;
   flex-direction: column;

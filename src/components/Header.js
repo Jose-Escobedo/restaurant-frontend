@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-let CartImg = require("../images/shopping-cart.png");
+let CartImg = "/images/shopping-cart.png";
 
 function Header() {
   return (
