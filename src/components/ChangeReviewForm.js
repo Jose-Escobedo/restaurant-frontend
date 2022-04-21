@@ -1,56 +1,53 @@
 import React from "react";
 import { useState } from "react";
-function ChangeReviewForm({ changeReview, reviewId }) {
-  const blankReview = {
-    name: "",
-    content: "",
-    id: `${reviewId}`,
+function ChangeReviewForm({ changeReview, id, name, content }) {
+  const [reviewContent, setReviewContent] = useState("");
+  const [reviewName, setReviewName] = useState("");
+
+  const handleReviewName = (e) => {
+    setReviewName(e.target.value);
   };
-  const [newReview, setFormData] = useState(blankReview);
-  const { name, content } = newReview;
-
-  function handleTitleChange(e) {
-    setFormData({
-      ...newReview,
-      name: e.target.value,
-    });
-    console.log(newReview);
-  }
-
-  function handleContentChange(e) {
-    setFormData({
-      ...newReview,
-      content: e.target.value,
-    });
-    console.log(newReview);
-  }
-
-  const handleForm = (e) => {
+  const handleReviewContent = (e) => {
+    setReviewContent(e.target.value);
+  };
+  function handleSubmit(e) {
     e.preventDefault();
+    setReviewContent(e.target.value);
+    setReviewName(e.target.value);
 
-    changeReview(newReview);
-    setFormData(blankReview);
-  };
+    fetch(`http://localhost:3000/reviews/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        content: reviewContent,
+        name: reviewName,
+      }),
+    })
+      .then((res) => res.json())
+      .then((newReview) => changeReview(newReview));
+  }
   return (
     <div id="edit-review" className="form-container">
-      <form onSubmit={handleForm} className="review-form">
+      <form onSubmit={handleSubmit} className="review-form">
         <input
           type="text"
           name="title"
-          value={newReview.name}
+          value={reviewName}
           placeholder="Insert your name here..."
-          onChange={handleTitleChange}
+          onChange={handleReviewName}
         />
         <textarea
           type="text"
           name="content"
           placeholder="Write your review here..."
           rows={5}
-          value={newReview.content}
-          onChange={handleContentChange}
+          value={reviewContent}
+          onChange={handleReviewContent}
         />
       </form>
-      <button onClick={handleForm} className="form-button" type="submit">
+      <button onClick={handleSubmit} className="form-button" type="submit">
         Edit Review
       </button>
     </div>

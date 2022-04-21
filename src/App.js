@@ -1,9 +1,7 @@
 import "./App.css";
-import Header from "./components/Header";
 import Reviews from "./components/Reviews";
 import Home from "./components/Home";
 import Menu from "./components/Menu";
-import NewReviewForm from "./components/NewReviewForm";
 import React, { useState, useEffect } from "react";
 import Cart from "./components/Cart";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
@@ -32,22 +30,18 @@ function App() {
     setReviews(updatedReviews);
   }
 
-  const changeReview = (review) => {
-    fetch(`http://localhost:3000/reviews/${review.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(review),
-    })
-      .then((res) => res.json())
-      .then((json) => setReviews(review));
-  };
+  function handleChangeReview(changedReview) {
+    const changedReviews = reviews.map((review) => {
+      if (review.id === changedReview.id) {
+        return changedReview;
+      } else {
+        return review;
+      }
+    });
+    setReviews(changedReviews);
+  }
 
   const addNewReview = (e) => {
-    // let newReview = [...reviews, newReviewObj]
-    // setReviews(newReview)
-
     fetch("http://localhost:3000/reviews", {
       method: "POST",
       headers: {
@@ -60,9 +54,6 @@ function App() {
   };
 
   const addNewMenuItem = (e) => {
-    // let newReview = [...reviews, newReviewObj]
-    // setReviews(newReview)
-
     fetch("http://localhost:3000/menu", {
       method: "POST",
       headers: {
@@ -110,7 +101,7 @@ function App() {
                 reviews={reviews}
                 addNewReview={addNewReview}
                 onDeleteReview={onDeleteReview}
-                changeReview={changeReview}
+                changeReview={handleChangeReview}
               />
             }
           />
