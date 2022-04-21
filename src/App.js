@@ -43,7 +43,7 @@ function App() {
   //     .then(() => setReviews(review.filter((item) => item.id !== review.id)));
   // }
 
-  function changeReview(changedReview){
+  function handleChangeReview(changedReview){
     const changedReviews = reviews.map((review)=> {
       if (review.id === changedReview.id) {
         return changedReview;
@@ -76,7 +76,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:9292/reviews")
+    fetch("http://localhost:3000/reviews")
       .then((res) => res.json())
       .then(handleRenderReviews);
   }, []);
@@ -124,7 +124,7 @@ function App() {
                 reviews={reviews}
                 addNewReview={addNewReview}
                 onDeleteReview={onDeleteReview}
-                changeReview={changeReview}
+                changeReview={handleChangeReview}
               />
             }
           />

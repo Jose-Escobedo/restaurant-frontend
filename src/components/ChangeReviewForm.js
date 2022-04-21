@@ -16,7 +16,7 @@ function ChangeReviewForm({ changeReview, id, name, content }) {
     setReviewName(e.target.value)
 
   
-  fetch(`http://localhost:9292/reviews/${id}`, {
+  fetch(`http://localhost:3000/reviews/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
