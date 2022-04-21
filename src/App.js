@@ -42,7 +42,7 @@ function App() {
   }
 
   const addNewReview = (e) => {
-    fetch("http://localhost:3000/reviews", {
+    fetch("http://localhost:9292/reviews", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -54,7 +54,7 @@ function App() {
   };
 
   const addNewMenuItem = (e) => {
-    fetch("http://localhost:3000/menu", {
+    fetch("http://localhost:9292/menu", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -66,13 +66,13 @@ function App() {
   };
 
   useEffect(() => {
-    fetch("http://localhost:3000/menu")
+    fetch("http://localhost:9292/menu")
       .then((res) => res.json())
       .then(handleRenderMenu);
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:3000/reviews")
+    fetch("http://localhost:9292/reviews")
       .then((res) => res.json())
       .then(handleRenderReviews);
   }, []);
