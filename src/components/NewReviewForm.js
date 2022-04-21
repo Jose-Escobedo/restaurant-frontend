@@ -31,6 +31,7 @@ function NewReviewForm({ addNewReview }) {
   };
   return (
     <div className="form-container">
+      <h2 id="add-review-header">Want to add a review?</h2>
       <form onSubmit={handleForm} className="review-form">
         <input
           type="text"

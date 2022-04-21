@@ -26,15 +26,9 @@ function App() {
     );
   }
 
-  function HandleRemoveReview(review) {
-    fetch(`http://localhost:3000/reviews/${review.id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((r) => r.json())
-      .then(() => setReviews(review.filter((item) => item.id !== review.id)));
+  function onDeleteReview(id) {
+    const updatedReviews = reviews.filter((review) => review.id !== id);
+    setReviews(updatedReviews);
   }
 
   const changeReview = (review) => {
@@ -95,26 +89,6 @@ function App() {
   }, []);
 
   return (
-    // <>
-    //   <Router>
-    //     <Header />
-
-    //     <Routes>
-    //       <Route exact path="/" element={<App />}>
-    //         <Route
-    //           exact
-    //           path="menu"
-    //           element={<Menu menu={menu} handleCartClick={handleCartClick} />}
-    //         />
-    //         <Route
-    //           exact
-    //           path="reviews"
-    //           element={<Reviews reviews={reviews} />}
-    //         />
-    //       </Route>
-    //     </Routes>
-    //   </Router>
-    // </>
     <div className="App">
       <Router>
         <Routes>
@@ -137,7 +111,7 @@ function App() {
               <Reviews
                 reviews={reviews}
                 addNewReview={addNewReview}
-                handleRemoveReview={HandleRemoveReview}
+                onDeleteReview={onDeleteReview}
                 changeReview={changeReview}
               />
             }

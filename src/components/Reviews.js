@@ -4,7 +4,7 @@ import Header from "./Header";
 import NewReviewForm from "./NewReviewForm";
 import ChangeReviewForm from "./ChangeReviewForm";
 
-function Reviews({ reviews, handleRemoveReview, addNewReview, changeReview }) {
+function Reviews({ reviews, onDeleteReview, addNewReview, changeReview }) {
   // const [buttonShow, setButtonShow] = useState(true);
   // function handleButtonShowForm(e) {
   //   setButtonShow(!buttonShow);
@@ -21,7 +21,7 @@ function Reviews({ reviews, handleRemoveReview, addNewReview, changeReview }) {
                 <ReviewItem
                   key={review.id}
                   review={review}
-                  handleRemoveReview={handleRemoveReview}
+                  onDeleteReview={onDeleteReview}
                 />
                 <ChangeReviewForm
                   key={review.id}
