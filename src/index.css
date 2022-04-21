@@ -137,6 +137,8 @@ code {
 }
 .review-item {
   font-size: 0.8rem;
+
+  width: 100%;
 }
 #review-title {
   font-size: 3rem;

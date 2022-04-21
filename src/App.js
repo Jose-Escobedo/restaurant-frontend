@@ -18,6 +18,7 @@ function App() {
 
   function handleRenderReviews(data) {
     setReviews(data);
+    console.log(data);
   }
 
   function handleCartClick(id, cart, price) {
@@ -32,9 +33,6 @@ function App() {
   }
 
   const changeReview = (review) => {
-    // let newReview = [...reviews, newReviewObj]
-    // setReviews(newReview)
-
     fetch(`http://localhost:3000/reviews/${review.id}`, {
       method: "PATCH",
       headers: {
@@ -43,7 +41,7 @@ function App() {
       body: JSON.stringify(review),
     })
       .then((res) => res.json())
-      .then(setReviews(review));
+      .then((json) => setReviews(review));
   };
 
   const addNewReview = (e) => {

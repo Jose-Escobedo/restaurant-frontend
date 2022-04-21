@@ -26,6 +26,7 @@ function NewReviewForm({ addNewReview }) {
 
   const handleForm = (e) => {
     e.preventDefault();
+
     addNewReview(newReview);
     setFormData(blankReview);
   };

@@ -1,9 +1,9 @@
 import React from "react";
-
+import ChangeReviewForm from "./ChangeReviewForm";
 function ReviewItem({
   review: { name, content, id },
   onDeleteReview,
-  handleUpdateReview,
+  changeReview,
   review,
 }) {
   function handleRemoveReview(e) {
@@ -21,6 +21,11 @@ function ReviewItem({
       <div className="remove-btn">
         <button onClick={handleRemoveReview}>Remove Review</button>
       </div>
+      <ChangeReviewForm
+        key={review.id}
+        changeReview={changeReview}
+        reviewId={review.id}
+      />
     </div>
   );
 }

@@ -9,24 +9,21 @@ function Reviews({ reviews, onDeleteReview, addNewReview, changeReview }) {
   // function handleButtonShowForm(e) {
   //   setButtonShow(!buttonShow);
   // }
+  let reviewArr = Array.from(reviews);
   return (
     <>
       <Header />
       <div className="reviews-container">
         <h1 id="review-title">Reviews</h1>
         <div className="reviews">
-          {reviews.map((review) => {
+          {reviewArr.map((review) => {
             return (
               <>
                 <ReviewItem
                   key={review.id}
                   review={review}
                   onDeleteReview={onDeleteReview}
-                />
-                <ChangeReviewForm
-                  key={review.id}
                   changeReview={changeReview}
-                  reviewId={review.id}
                 />
               </>
             );

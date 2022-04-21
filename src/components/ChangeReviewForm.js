@@ -27,6 +27,7 @@ function ChangeReviewForm({ changeReview, reviewId }) {
 
   const handleForm = (e) => {
     e.preventDefault();
+
     changeReview(newReview);
     setFormData(blankReview);
   };
