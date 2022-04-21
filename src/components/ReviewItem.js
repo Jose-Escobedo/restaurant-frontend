@@ -1,23 +1,23 @@
 import React from "react";
+import ChangeReviewForm from "./ChangeReviewForm";
 
-function ReviewItem({
-  review: { name, content, id },
-  onDeleteReview,
-  handleUpdateReview,
-  review,
-}) {
-  // const [reviews, setReviews] = useState([]);
+
+function ReviewItem({onDeleteReview, changeReview, review}) {
+  const {id, name, content} = review
 
   // const addNewReview = (newReviewObj) => {
   //  let newReview = [...reviews, newReviewObj]
   //  setReviews(newReview)
   // }
   function handleRemoveReview(){
-    fetch(`http://localhost:3000/reviews/${id}`,{
+    fetch(`http://localhost:9292/reviews/${id}`,{
       method: "DELETE",
 
     });
     onDeleteReview(id)
+  }
+  function handleChangeReview(newReview){
+    changeReview(newReview)
   }
 
   return (
@@ -31,7 +31,13 @@ function ReviewItem({
           Remove Review
         </button>
       </div>
-    </div>
+      <ChangeReviewForm
+        id={id}
+        content={content}
+        name={name}
+        changeReview={handleChangeReview}
+      />
+   </div>
   );
 }
 

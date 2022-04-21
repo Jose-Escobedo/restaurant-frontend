@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import ReviewItem from "./ReviewItem";
 import Header from "./Header";
 import NewReviewForm from "./NewReviewForm";
-import ChangeReviewForm from "./ChangeReviewForm";
+
+
 
 function Reviews({ reviews, onDeleteReview, addNewReview, changeReview }) {
   // const [buttonShow, setButtonShow] = useState(true);
@@ -22,11 +23,7 @@ function Reviews({ reviews, onDeleteReview, addNewReview, changeReview }) {
                   key={review.id}
                   review={review}
                   onDeleteReview={onDeleteReview}
-                />
-                <ChangeReviewForm
-                  key={review.id}
                   changeReview={changeReview}
-                  reviewId={review.id}
                 />
               </>
             );

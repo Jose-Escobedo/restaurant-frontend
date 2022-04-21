@@ -43,20 +43,16 @@ function App() {
   //     .then(() => setReviews(review.filter((item) => item.id !== review.id)));
   // }
 
-  const changeReview = (review) => {
-    // let newReview = [...reviews, newReviewObj]
-    // setReviews(newReview)
-
-    fetch(`http://localhost:3000/reviews/${review.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(review),
+  function changeReview(changedReview){
+    const changedReviews = reviews.map((review)=> {
+      if (review.id === changedReview.id) {
+        return changedReview;
+      } else {
+        return review
+      } 
     })
-      .then((res) => res.json())
-      .then(setReviews(review));
-  };
+    setReviews(changedReviews)
+  }
 
   const addNewReview = (e) => {
     // let newReview = [...reviews, newReviewObj]
@@ -80,7 +76,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:3000/reviews")
+    fetch("http://localhost:9292/reviews")
       .then((res) => res.json())
       .then(handleRenderReviews);
   }, []);
