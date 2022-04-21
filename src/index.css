@@ -152,6 +152,11 @@ code {
 }
 .name-content {
   padding: 4%;
+  background: rgb(222, 220, 220);
+  border-radius: 30px;
+}
+.remove-btn {
+  padding-top: 3%;
 }
 
 .reviews-container button {

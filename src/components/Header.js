@@ -27,11 +27,11 @@ function Header() {
           </li>
         </div>
       </div>
-      <div className="cart-li-container">
+      {/* <div className="cart-li-container">
         <Link className="cart-link" id="cart-link" to="/cart">
           <img id="img-cart" src={CartImg}></img>
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 }
