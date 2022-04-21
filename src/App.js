@@ -62,7 +62,7 @@ function App() {
       body: JSON.stringify(e),
     })
       .then((res) => res.json())
-      .then(setMenu([...reviews, e]));
+      .then(setMenu([...menu, e]));
   };
 
   useEffect(() => {
