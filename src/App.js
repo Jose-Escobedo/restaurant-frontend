@@ -54,7 +54,7 @@ function App() {
   };
 
   const addNewMenuItem = (e) => {
-    fetch("http://localhost:9292/menu", {
+    fetch("http://localhost:9292/menu_items", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -66,7 +66,7 @@ function App() {
   };
 
   useEffect(() => {
-    fetch("http://localhost:9292/menu")
+    fetch("http://localhost:9292/menu_items")
       .then((res) => res.json())
       .then(handleRenderMenu);
   }, []);
